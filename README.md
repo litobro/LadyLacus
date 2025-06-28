@@ -1,13 +1,14 @@
 
 # LadyLacus
 
-This webapp utilizes the Lacus to capture a screenshot of a webpage and display it immediately to the user. The image is never stored outside of a valkey database which is ephemereal in nature. 
+This webapp utilizes the [Lacus](https://github.com/ail-project/lacus) tool to capture a screenshot of a webpage and display it immediately to the user. The image is never stored outside of a valkey database which is ephemereal in nature. 
 
 ## Structure
 
 - app/app.py: Main Flask app
 - app/templates/: Jinja2 templates
 - app/.env: Environment variables (LACUS_URL)
+- lacus/: Lacus submodule from the main project
 
 ## Usage
 
@@ -18,8 +19,22 @@ This webapp utilizes the Lacus to capture a screenshot of a webpage and display 
    cd app
    python app.py
 
+## Docker Deployment
+
+This application is conveniently deployed with docker compose. Simply clone the repository and run the following command:
+
+```
+docker compose up -d
+```
+
+LadyLacus will be reachable at [http://localhost:8000](http://localhost:8000) by default.
+
 ## Next Steps
 
-- Dockerize Flask app
-- Add a docker-compose.yml at the project root to run both the Flask app and Lacus (from the lacus/ submodule)
 - Improved styling
+- Additional heuristics for user evaluation
+    - AI summary of image?
+    - VirusTotal integration
+    - Other URL reputation lookups
+- LookyLoo submission/integration for admin review?
+- Auto-submit for admin review button

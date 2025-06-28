@@ -1,0 +1,17 @@
+services:
+  lacus:
+    build: ./lacus
+    container_name: lacus
+    ports:
+      - "7100:7100"
+    volumes:
+      - ./lacus/config:/app/lacus/config
+  ladylacus:
+    build: ./app
+    container_name: ladylacus
+    ports:
+      - "8000:8000"
+    environment:
+      - LACUS_URL=http://lacus:7100
+    depends_on:
+      - lacus
