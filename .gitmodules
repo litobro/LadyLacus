@@ -1,0 +1,3 @@
+[submodule "lacus"]
+	path = lacus
+	url = https://github.com/ail-project/lacus.git
