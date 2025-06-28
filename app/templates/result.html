@@ -26,7 +26,9 @@
   <body class="bg-gray-50 min-h-screen flex flex-col">
     <main class="flex-1 flex flex-col items-center justify-center py-12">
       <h1 class="text-3xl font-bold text-gray-800 mb-4">Screenshot Result</h1>
-      <div id="status" class="text-lg text-gray-700 bg-white border border-gray-200 rounded-md px-6 py-4 shadow mb-6 w-full max-w-2xl text-center">Processing screenshot... (<span id="capture_status" class="font-mono text-blue-600">pending</span>)</div>
+      <div id="status" class="flex items-center justify-center bg-white border border-gray-200 rounded-md px-0 py-0 shadow mb-6 w-full h-full min-h-[60vh] min-w-[60vw]" style="background:transparent;border:none;box-shadow:none;">
+        Processing screenshot... (<span id="capture_status" class="font-mono text-blue-600">pending</span>)
+      </div>
       <script>
         function showFullscreen(src) {
           const overlay = document.createElement('div');
@@ -41,7 +43,7 @@
             .then(data => {
               if (data.ready) {
                 document.getElementById('status').innerHTML =
-                  `<img src="${data.image_url}" class="max-w-full border border-gray-300 rounded shadow cursor-zoom-in" style="transition:box-shadow .2s" onclick="showFullscreen('${data.image_url}')">`;
+                  `<img src="${data.image_url}" class="block mx-auto border border-gray-300 rounded shadow cursor-zoom-in" style="max-width:98vw;max-height:80vh;width:auto;height:auto;transition:box-shadow .2s;display:block;object-fit:contain;" onclick="showFullscreen('${data.image_url}')">`;
               } else {
                 let statusText = data.status ? data.status : 'pending';
                 document.getElementById('capture_status').textContent = statusText;
